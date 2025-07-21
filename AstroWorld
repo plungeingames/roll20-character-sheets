@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Astro World Character Sheet</title>
+</head>
+<body>
+    <div class="charsheet">
+        <div class="sheet-header-bar">
+            <h1 class="sheet-logo-text">ASTRO WORLD</h1>
+        </div>
+        <hr>
+
+        <div class="sheet-type-operator sheet-type">
+            
+            <input type="radio" name="attr_operator_tab" class="sheet-tab sheet-tab-profile" value="profile" checked="checked"><span>Profile</span>
+            <input type="radio" name="attr_operator_tab" class="sheet-tab sheet-tab-products" value="products"><span>Products</span>
+            <input type="radio" name="attr_operator_tab" class="sheet-tab sheet-tab-datapad" value="datapad"><span>Datapad</span>
+
+            <div class="sheet-tab-content sheet-tab-profile">
+                <div class="section header-grid grid-container">
+                    <div>
+                        <label>Operator Name</label><input type="text" name="attr_character_name" />
+                        <label>Origin</label><input type="text" name="attr_origin" />
+                        <label>Personal Astros</label><input type="number" name="attr_personal_astros" value="50" />
+                    </div>
+                    <div>
+                         <label>Concept</label><textarea name="attr_concept"></textarea>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>Operational Status</h2>
+                    <div class="status-tracks-grid grid-container">
+                        <div class="track-column">
+                            <div class="stat-track">
+                                <label>Health</label>
+                                <div class="values">
+                                    <input type="number" name="attr_health" value="10" />
+                                    <span>/</span>
+                                    <input type="number" name="attr_health_max" value="10" />
+                                </div>
+                            </div>
+                            <div class="conditions">
+                                <label>Tier 3 (9+) Condition</label><input type="text" name="attr_health_t3_condition" />
+                                <label>Tier 2 (4-8) Condition</label><input type="text" name="attr_health_t2_condition" />
+                                <label>Tier 1 (1-3) Condition</label><input type="text" name="attr_health_t1_condition" />
+                            </div>
+                        </div>
+                        <div class="track-column">
+                            <div class="stat-track">
+                                <label>Drive</label>
+                                <div class="values">
+                                    <input type="number" name="attr_drive" value="10" />
+                                    <span>/</span>
+                                    <input type="number" name="attr_drive_max" value="10" />
+                                </div>
+                            </div>
+                             <div class="conditions">
+                                <label>Tier 3 (9+) Condition</label><input type="text" name="attr_drive_t3_condition" />
+                                <label>Tier 2 (4-8) Condition</label><input type="text" name="attr_drive_t2_condition" />
+                                <label>Tier 1 (1-3) Condition</label><input type="text" name="attr_drive_t1_condition" />
+                            </div>
+                        </div>
+                        <div class="track-column">
+                            <div class="stat-track">
+                                <label>Stress</label>
+                                <div class="values">
+                                    <input type="number" name="attr_stress" value="0" />
+                                    <span>/</span>
+                                    <input type="number" name="attr_stress_max" value="10" />
+                                </div>
+                            </div>
+                             <div class="conditions">
+                                <label>Tier 1 (0-3) Condition</label><input type="text" name="attr_stress_t1_condition" />
+                                <label>Tier 2 (4-8) Condition</label><input type="text" name="attr_stress_t2_condition" />
+                                <label>Tier 3 (9+) Condition</label><input type="text" name="attr_stress_t3_condition" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2>General Skills</h2>
+                    <div class="skills-grid grid-container">
+                        <div class="skill-item"><button type="roll" name="roll_analyze" value="&{template:astro} {{name=@{character_name}}} {{skill_name=Analyze}} {{roll_result=[[@{analyze} + ?{Product Die|No Product,d4|Junked,d6|Refurbed,2d4kh1|Used,2d6kh1|Brand New,d8|Limited,d12|Special,2d8kh1|Masterwork,2d12kh1}]]}}"></button><span>Analyze</span><input type="number" name="attr_analyze" value="0" /></div>
+                        <div class="skill-item"><button type="roll" name="roll_athletics" value="&{template:astro} {{name=@{character_name}}} {{skill_name=Athletics}} {{roll_result=[[@{athletics} + ?{Product Die|No Product,d4|Junked,d6|Refurbed,2d4kh1|Used,2d6kh1|Brand New,d8|Limited,d12|Special,2d8kh1|Masterwork,2d12kh1}]]}}"></button><span>Athletics</span><input type="number" name="attr_athletics" value="0" /></div>
+                        <div class="skill-item"><button type="roll" name="roll_brute_force" value="&{template:astro} {{name=@{character_name}}} {{skill_name=Brute Force}} {{roll_result=[[@{brute_force} + ?{Product Die|No Product,d4|Junked,d6|Refurbed,2d4kh1|Used,2d6kh1|Brand New,d8|Limited,d12|Special,2d8kh1|Masterwork,2d12kh1}]]}}"></button><span>Brute Force</span><input type="number" name="attr_brute_force" value="0" /></div>
+                        <div class="skill-item"><button type="roll" name="roll_composure" value="&{template:astro} {{name=@{character_name}}} {{skill_name=Composure}} {{roll_result=[[@{composure} + ?{Product Die|No Product,d4|Junked,d6|Refurbed,2d4kh1|Used,2d6kh1|Brand New,d8|Limited,d12|Special,2d8kh1|Masterwork,2d12kh1}]]}}"></button><span>Composure</span><input type="number" name="attr_composure" value="0" /></div>
+                        <div class="skill-item"><button type="roll" name="roll_discern" value="&{template:astro} {{name=@{character_name}}} {{skill_name=Discern}} {{roll_result=[[@{discern} + ?{Product Die|No Product,d4|Junked,d6|Refurbed,2d4kh1|Used,2d6kh1|Brand New,d8|Limited,d12|Special,2d8kh1|Masterwork,2d12kh1}]]}}"></button><span>Discern</span><input type="number" name="attr_discern" value="0" /></div>
+                        <div class="skill-item"><button type="roll" name="roll_endurance" value="&{template:astro} {{name=@{character_name}}} {{skill_name=Endurance}} {{roll_result=[[@{endurance} + ?{Product Die|No Product,d4|Junked,d6|Refurbed,2d4kh1|Used,2d6kh1|Brand New,d8|Limited,d12|Special,2d8kh1|Masterwork,2d12kh1}]]}}"></button><span>Endurance</span><input type="number" name="attr_endurance" value="0" /></div>
+                        <div class="skill-item"><button type="roll" name="roll_finesse" value="&{template:astro} {{name=@{character_name}}} {{skill_name=Finesse}} {{roll_result=[[@{finesse} + ?{Product Die|No Product,d4|Junked,d6|Refurbed,2d4kh1|Used,2d6kh1|Brand New,d8|Limited,d12|Special,2d8kh1|Masterwork,2d12kh1}]]}}"></button><span>Finesse</span><input type="number" name="attr_finesse" value="0" /></div>
+                        <div class="skill-item"><button type="roll" name="roll_hide" value="&{template:astro} {{name=@{character_name}}} {{skill_name=Hide}} {{roll_result=[[@{hide} + ?{Product Die|No Product,d4|Junked,d6|Refurbed,2d4kh1|Used,2d6kh1|Brand New,d8|Limited,d12|Special,2d8kh1|Masterwork,2d12kh1}]]}}"></button><span>Hide</span><input type="number" name="attr_hide" value="0" /></div>
+                        <div class="skill-item"><button type="roll" name="roll_influence" value="&{template:astro} {{name=@{character_name}}} {{skill_name=Influence}} {{roll_result=[[@{influence} + ?{Product Die|No Product,d4|Junked,d6|Refurbed,2d4kh1|Used,2d6kh1|Brand New,d8|Limited,d12|Special,2d8kh1|Masterwork,2d12kh1}]]}}"></button><span>Influence</span><input type="number" name="attr_influence" value="0" /></div>
+                        <div class="skill-item"><button type="roll" name="roll_interface" value="&{template:astro} {{name=@{character_name}}} {{skill_name=Interface}} {{roll_result=[[@{interface} + ?{Product Die|No Product,d4|Junked,d6|Refurbed,2d4kh1|Used,2d6kh1|Brand New,d8|Limited,d12|Special,2d8kh1|Masterwork,2d12kh1}]]}}"></button><span>Interface</span><input type="number" name="attr_interface" value="0" /></div>
+                        <div class="skill-item"><button type="roll" name="roll_management" value="&{template:astro} {{name=@{character_name}}} {{skill_name=Management}} {{roll_result=[[@{management} + ?{Product Die|No Product,d4|Junked,d6|Refurbed,2d4kh1|Used,2d6kh1|Brand New,d8|Limited,d12|Special,2d8kh1|Masterwork,2d12kh1}]]}}"></button><span>Management</span><input type="number" name="attr_management" value="0" /></div>
+                        <div class="skill-item"><button type="roll" name="roll_operate" value="&{template:astro} {{name=@{character_name}}} {{skill_name=Operate}} {{roll_result=[[@{operate} + ?{Product Die|No Product,d4|Junked,d6|Refurbed,2d4kh1|Used,2d6kh1|Brand New,d8|Limited,d12|Special,2d8kh1|Masterwork,2d12kh1}]]}}"></button><span>Operate</span><input type="number" name="attr_operate" value="0" /></div>
+                        <div class="skill-item"><button type="roll" name="roll_perform" value="&{template:astro} {{name=@{character_name}}} {{skill_name=Perform}} {{roll_result=[[@{perform} + ?{Product Die|No Product,d4|Junked,d6|Refurbed,2d4kh1|Used,2d6kh1|Brand New,d8|Limited,d12|Special,2d8kh1|Masterwork,2d12kh1}]]}}"></button><span>Perform</span><input type="number" name="attr_perform" value="0" /></div>
+                        <div class="skill-item"><button type="roll" name="roll_sales" value="&{template:astro} {{name=@{character_name}}} {{skill_name=Sales}} {{roll_result=[[@{sales} + ?{Product Die|No Product,d4|Junked,d6|Refurbed,2d4kh1|Used,2d6kh1|Brand New,d8|Limited,d12|Special,2d8kh1|Masterwork,2d12kh1}]]}}"></button><span>Sales</span><input type="number" name="attr_sales" value="0" /></div>
+                        <div class="skill-item"><button type="roll" name="roll_scan" value="&{template:astro} {{name=@{character_name}}} {{skill_name=Scan}} {{roll_result=[[@{scan} + ?{Product Die|No Product,d4|Junked,d6|Refurbed,2d4kh1|Used,2d6kh1|Brand New,d8|Limited,d12|Special,2d8kh1|Masterwork,2d12kh1}]]}}"></button><span>Scan</span><input type="number" name="attr_scan" value="0" /></div>
+                        <div class="skill-item"><button type="roll" name="roll_targeting" value="&{template:astro} {{name=@{character_name}}} {{skill_name=Targeting}} {{roll_result=[[@{targeting} + ?{Product Die|No Product,d4|Junked,d6|Refurbed,2d4kh1|Used,2d6kh1|Brand New,d8|Limited,d12|Special,2d8kh1|Masterwork,2d12kh1}]]}}"></button><span>Targeting</span><input type="number" name="attr_targeting" value="0" /></div>
+                        <div class="skill-item"><button type="roll" name="roll_threaten" value="&{template:astro} {{name=@{character_name}}} {{skill_name=Threaten}} {{roll_result=[[@{threaten} + ?{Product Die|No Product,d4|Junked,d6|Refurbed,2d4kh1|Used,2d6kh1|Brand New,d8|Limited,d12|Special,2d8kh1|Masterwork,2d12kh1}]]}}"></button><span>Threaten</span><input type="number" name="attr_threaten" value="0" /></div>
+                    </div>
+                </div>
+    
+                <div class="section final-stats-grid grid-container">
+                    <div class="final-stat"><label>Action Points (AP)</label><input type="number" name="attr_ap" value="5" /></div>
+                    <div class="final-stat"><label>Initiative</label><input type="number" name="attr_initiative" value="0" /></div>
+                    <div class="final-stat"><label>Carrying Capacity</label><input type="number" name="attr_carrying_capacity" value="3" /></div>
+                </div>
+            </div>
+    
+            <div class="sheet-tab-content sheet-tab-products">
+                <div class="section traits-grid grid-container">
+                    <div>
+                        <h3>Traits</h3>
+                        <textarea name="attr_traits_list" placeholder="List your character's traits here..."></textarea>
+                    </div>
+                    <div>
+                        <h3>Techniques</h3>
+                        <textarea name="attr_techniques_list" placeholder="List your character's techniques here..."></textarea>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2>Product Loadout</h2>
+                    <div class="loadout-grid grid-container">
+                        <div class="slot-item"><label>Outfit</label><input type="text" name="attr_outfit_name" /><input type="text" name="attr_outfit_skills" placeholder="Skills" /><div class="details"><input type="text" name="attr_outfit_quality" placeholder="Quality" /><input type="number" name="attr_outfit_pv" placeholder="PV" /></div></div>
+                        <div class="slot-item"><label>Armor</label><input type="text" name="attr_armor_name" /><input type="text" name="attr_armor_skills" placeholder="Skills" /><div class="details"><input type="text" name="attr_armor_quality" placeholder="Quality" /><input type="number" name="attr_armor_pv" placeholder="PV" /></div></div>
+                        <div class="slot-item"><label>Headwear</label><input type="text" name="attr_headwear_name" /><input type="text" name="attr_headwear_skills" placeholder="Skills" /><div class="details"><input type="text" name="attr_headwear_quality" placeholder="Quality" /><input type="number" name="attr_headwear_pv" placeholder="PV" /></div></div>
+                        <div class="slot-item"><label>Hands</label><input type="text" name="attr_hands_name" /><input type="text" name="attr_hands_skills" placeholder="Skills" /><div class="details"><input type="text" name="attr_hands_quality" placeholder="Quality" /><input type="number" name="attr_hands_pv" placeholder="PV" /></div></div>
+                        <div class="slot-item"><label>Feet</label><input type="text" name="attr_feet_name" /><input type="text" name="attr_feet_skills" placeholder="Skills" /><div class="details"><input type="text" name="attr_feet_quality" placeholder="Quality" /><input type="number" name="attr_feet_pv" placeholder="PV" /></div></div>
+                        <div class="slot-item"><label>Back</label><input type="text" name="attr_back_name" /><input type="text" name="attr_back_skills" placeholder="Skills" /><div class="details"><input type="text" name="attr_back_quality" placeholder="Quality" /><input type="number" name="attr_back_pv" placeholder="PV" /></div></div>
+                        <div class="slot-item"><label>Utility 1</label><input type="text" name="attr_utility1_name" /><input type="text" name="attr_utility1_skills" placeholder="Skills" /><div class="details"><input type="text" name="attr_utility1_quality" placeholder="Quality" /><input type="number" name="attr_utility1_pv" placeholder="PV" /></div></div>
+                        <div class="slot-item"><label>Utility 2</label><input type="text" name="attr_utility2_name" /><input type="text" name="attr_utility2_skills" placeholder="Skills" /><div class="details"><input type="text" name="attr_utility2_quality" placeholder="Quality" /><input type="number" name="attr_utility2_pv" placeholder="PV" /></div></div>
+                    </div>
+                    <div class="inventory-section">
+                        <label>Held Items & Stowed Products</label>
+                        <textarea name="attr_inventory"></textarea>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="sheet-tab-content sheet-tab-datapad">
+                <div class="section">
+                    <h2>Unit Profile</h2>
+                    <div class="sheet-row">
+                        <div class="sheet-col"><label>Unit Designation</label><input type="text" name="attr_unit_designation" /></div>
+                        <div class="sheet-col"><label>Unit Nickname</label><input type="text" name="attr_unit_nickname" /></div>
+                    </div>
+                </div>
+                <div class="section">
+                    <h3>Personal Driver</h3>
+                    <textarea name="attr_personal_driver"></textarea>
+                </div>
+                <div class="section">
+                    <h3>Past Connections</h3>
+                    <textarea name="attr_past_connections"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="sheet-type-unit sheet-type">
+        </div>
+
+        <rolltemplate class="sheet-rolltemplate-astro">
+            <table>
+                <tr>
+                    <th>{{name}}</th>
+                    <td class="sheet-result" rowspan="2">{{roll_result}}</td>
+                </tr>
+                <tr>
+                    <td class="sheet-subheader">uses {{skill_name}}</td>
+                </tr>
+            </table>
+        </rolltemplate>
+    </div>
+</body>
+</html>
